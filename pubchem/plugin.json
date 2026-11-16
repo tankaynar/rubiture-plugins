@@ -6,6 +6,7 @@
   "icon": "icon.svg",
   "exec": { "command": "python3", "args": ["main.py"] },
   "capabilities": ["network"],
+  "capabilityReasons": { "network": "to look up what you type on PubChem, run by the US National Library of Medicine" },
   "contributes": {
     "commands": [
       { "id": "search",
