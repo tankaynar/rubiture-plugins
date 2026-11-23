@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-BOND = 50.8                 # Molion's bond length, canvas units
+BOND = 50.8                 # Rubiture's bond length, canvas units
 
 
 def molecule(scene: dict, molecule_id: str) -> dict | None:

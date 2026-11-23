@@ -1,5 +1,5 @@
-"""The plugin's answers to Molion: `query` (a search, as palette rows) and `invoke` (a row
-chosen: PubChem's drawing of it, for Molion to place).
+"""The plugin's answers to Rubiture: `query` (a search, as palette rows) and `invoke` (a row
+chosen: PubChem's drawing of it, for Rubiture to place).
 
 Answers are kept for a few minutes, so typing back to an earlier query, or the same search in
 a moment, asks PubChem nothing; PubChem asks for no more than five requests a second.
@@ -107,7 +107,7 @@ class PubChemPlugin:
         except Exception as error:
             if not hit.get('smiles'):
                 return {'ok': False, 'error': _failure_message(error)}
-        # No drawing to be had: Molion lays out the SMILES the search found.
+        # No drawing to be had: Rubiture lays out the SMILES the search found.
         if hit.get('smiles'):
             return {'ok': True, 'place': {'smiles': hit['smiles'], 'title': title}}
         return {'ok': False, 'error': f'PubChem has no structure for CID {cid}.'}

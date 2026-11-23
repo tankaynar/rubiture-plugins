@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Teaching — a Molion plugin for teaching organic chemistry.
+"""Teaching — a Rubiture plugin for teaching organic chemistry.
 
 Newman, Fischer and Haworth projections of a selected bond or sugar; Retrosynthetic
 Disconnect, the synthons beside the target with the retro arrow; a mechanism stepped through
@@ -8,7 +8,7 @@ out by Export Question (answers left out)….
 
     python3 main.py
 
-The protocol: Molion's plugin protocol, newline-delimited JSON-RPC 2.0 on stdin/stdout.
+The protocol: Rubiture's plugin protocol, newline-delimited JSON-RPC 2.0 on stdin/stdout.
 Logs go to stderr only; stdout is the channel. Standard library only.
 """
 
@@ -58,7 +58,7 @@ def serve(host: Host) -> int:
                 return 0
             else:
                 result = {}
-        except Exception as error:            # Molion shows it; the plugin keeps running
+        except Exception as error:            # Rubiture shows it; the plugin keeps running
             log(traceback.format_exc())
             if request_id is not None:
                 host.reply(request_id, error=str(error))

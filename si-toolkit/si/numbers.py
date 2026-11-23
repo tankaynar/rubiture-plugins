@@ -1,6 +1,6 @@
 """Compound numbers in the order an SI lists them: 1, 2, 3a, 3b, 10 — or I, II, IV; or A, B.
 
-Molion writes numbers in one style per document (arabic, roman or letters), each with an
+Rubiture writes numbers in one style per document (arabic, roman or letters), each with an
 optional series letter (3a). Sorting the text as text would put 10 before 2 and IV before V.
 """
 

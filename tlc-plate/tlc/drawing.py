@@ -1,7 +1,7 @@
-"""The plate as a vector picture: Molion's display-list ops in the plate's own units.
+"""The plate as a vector picture: Rubiture's display-list ops in the plate's own units.
 
 The same drawing is placed on the canvas and shown in the Edit TLC dialog; the dialog's copy
-also marks what is selected. Molion stretches the box (0..width × 0..height) onto the picture,
+also marks what is selected. Rubiture stretches the box (0..width × 0..height) onto the picture,
 so these units are only proportions.
 """
 
@@ -16,7 +16,7 @@ FRONT_Y = 28                       # solvent front
 BASELINE_Y = PLATE_HEIGHT - 28     # where the samples were applied
 # Lane labels and the caption sit below the plate, on neutral ground: on a coloured plate
 # (KMnO₄'s purple) pencil-grey text would not read, least of all on a dark screen, where
-# Molion mirrors neutral ink to light but leaves colours as they are.
+# Rubiture mirrors neutral ink to light but leaves colours as they are.
 LABEL_HEIGHT = 22
 CAPTION_HEIGHT = 20
 SPOT_RX, SPOT_RY = 10, 7
@@ -24,7 +24,7 @@ SPOT_RX, SPOT_RY = 10, 7
 EDGE = '#8C8C8C'
 PENCIL = '#5E5E5E'
 PAPER = '#FFFFFF'
-SELECTION = '#1E90FF'              # DodgerBlue, as every selection in Molion
+SELECTION = '#1E90FF'              # DodgerBlue, as every selection in Rubiture
 
 ALPHA = {'strong': ('E6', '50'), 'medium': ('A6', '38'), 'faint': ('5C', '22')}
 

@@ -1,5 +1,5 @@
 Picture to Structure reads pictures with MolScribe, exported to ONNX. The model files are
-downloaded on first use from the molion-plugins repository's releases; MolScribe's code and weights are
+downloaded on first use from the rubiture-plugins repository's releases; MolScribe's code and weights are
 under the licence below (github.com/thomas0809/MolScribe, huggingface.co/yujieq/MolScribe).
 
 The frozen plugin also contains onnxruntime (MIT, (c) Microsoft Corporation; its own

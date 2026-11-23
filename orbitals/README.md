@@ -1,10 +1,10 @@
 # Orbitals
 
-A Molion plugin that ships with Molion: atomic and hybrid orbitals (s, p, sp, sp², sp³ and the
+A Rubiture plugin that ships with Rubiture: atomic and hybrid orbitals (s, p, sp, sp², sp³ and the
 five d orbitals), drawn as pictures that stay sharp at any zoom and export as vectors to SVG
 and PDF.
 
-Turn it on in **Settings → Plugins → Included with Molion**.
+Turn it on in **Settings → Plugins → Included with Rubiture**.
 
 ## Placing an orbital
 
@@ -47,7 +47,7 @@ search, and they need no process at all:
 - Benzene p Orbitals
 
 Their orbitals are the plugin's own, so each one can be edited by double-clicking it.
-Templates with a molecule are placed by Molion, as every structure is.
+Templates with a molecule are placed by Rubiture, as every structure is.
 
 ## How the drawings are made
 

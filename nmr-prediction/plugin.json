@@ -1,5 +1,5 @@
 {
-  "id": "molion.nmr-prediction",
+  "id": "rubiture.nmr-prediction",
   "name": "NMR Prediction",
   "version": "1.0.0",
   "description": "Predicted ¹H and ¹³C spectra for the selection, linked to its atoms.",

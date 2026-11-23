@@ -1,4 +1,4 @@
-"""The card's answer: its shape (Molion refuses what it cannot draw), links and copy lines."""
+"""The card's answer: its shape (Rubiture refuses what it cannot draw), links and copy lines."""
 
 import copy
 import re

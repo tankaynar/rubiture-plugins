@@ -116,7 +116,7 @@ class Scorer:
         return canon if ok else '<invalid>'
 
     def from_molfile(self, text: str) -> str:
-        """The plugin's molfile as Molion would hold it: wedges read for stereo, aliases expanded."""
+        """The plugin's molfile as Rubiture would hold it: wedges read for stereo, aliases expanded."""
         from rdkit import Chem
         mol = Chem.MolFromMolBlock(text, sanitize=False)
         if mol is None:

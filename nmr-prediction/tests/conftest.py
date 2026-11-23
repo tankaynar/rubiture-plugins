@@ -26,5 +26,5 @@ def raw():
 
 @pytest.fixture
 def molecule(raw):
-    """molecule('ethyl acetate') → Structure, as Molion would send it."""
+    """molecule('ethyl acetate') → Structure, as Rubiture would send it."""
     return lambda name: read(raw[name])

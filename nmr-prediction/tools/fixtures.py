@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Writes tests/fixtures/structures.json: molecules as Molion sends them, so the tests run on
+"""Writes tests/fixtures/structures.json: molecules as Rubiture sends them, so the tests run on
 the standard library alone. Run with RDKit 2025.9.2 after changing
 tools/structure_json.py.
 

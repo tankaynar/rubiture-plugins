@@ -1,6 +1,6 @@
-"""Newline-delimited JSON-RPC 2.0 with Molion, both ways on one pipe.
+"""Newline-delimited JSON-RPC 2.0 with Rubiture, both ways on one pipe.
 
-While the plugin waits on its own call (a `dialog` stays open until the user is done), Molion
+While the plugin waits on its own call (a `dialog` stays open until the user is done), Rubiture
 sends requests of its own (`dialogEvent`); those are answered here, by whatever handler the
 waiting call installed.
 """
@@ -18,7 +18,7 @@ def log(message: str) -> None:
 
 
 class HostError(RuntimeError):
-    """Molion answered a call with an error."""
+    """Rubiture answered a call with an error."""
 
 
 class Host:
@@ -26,7 +26,7 @@ class Host:
         self._readline = readline
         self._write = write
         self._next_id = 0
-        # Answers Molion's requests that arrive while a call waits, by method.
+        # Answers Rubiture's requests that arrive while a call waits, by method.
         self.handlers: dict[str, Callable[[dict], dict]] = {}
 
     def send(self, message: dict) -> None:
@@ -48,7 +48,7 @@ class Host:
         while True:
             line = self._readline()
             if not line:
-                raise HostError('Molion closed the connection')
+                raise HostError('Rubiture closed the connection')
             line = line.strip()
             if not line:
                 continue
@@ -66,7 +66,7 @@ class Host:
             return message.get('result') or {}
 
     def serve_inbound(self, message: dict) -> None:
-        """A request from Molion that arrived mid-call: a handler's answer, else an empty one."""
+        """A request from Rubiture that arrived mid-call: a handler's answer, else an empty one."""
         if 'id' not in message:
             return
         handler = self.handlers.get(message['method'])

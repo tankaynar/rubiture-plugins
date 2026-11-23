@@ -1,6 +1,6 @@
-"""Formulas as an SI writes them, from the composition Molion's analysis reports.
+"""Formulas as an SI writes them, from the composition Rubiture's analysis reports.
 
-Molion's own `formula` is plain Hill text ("C13H18O2"). An HRMS line names the ion, so the
+Rubiture's own `formula` is plain Hill text ("C13H18O2"). An HRMS line names the ion, so the
 adduct's atoms have to be added first, and journals set the counts as subscripts. Both are
 done here from `composition` ({element, isotope, count}; isotope 0 for the natural element).
 """
@@ -10,7 +10,7 @@ from __future__ import annotations
 SUBSCRIPTS = str.maketrans('0123456789', '₀₁₂₃₄₅₆₇₈₉')
 SUPERSCRIPTS = str.maketrans('0123456789+-', '⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻')
 
-# Hydrogen's isotopes keep their own symbols, as Molion's formula writes them.
+# Hydrogen's isotopes keep their own symbols, as Rubiture's formula writes them.
 HYDROGEN_ISOTOPES = {2: 'D', 3: 'T'}
 
 Counts = dict  # (element, isotope) -> count

@@ -34,7 +34,7 @@ def test_near_white_noise_does_not_stop_the_trim():
     assert (box.left, box.top) == (50, 20)
 
 
-def test_molions_crop_is_applied_first():
+def test_rubitures_crop_is_applied_first():
     pixels = drawing()
     pixels[80:90, 0:10] = 0            # outside the crop
     _, box = preprocess.prepare(png(pixels), {'left': 0.2, 'top': 0, 'right': 1, 'bottom': 0.5}, size=32)

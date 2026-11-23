@@ -1,4 +1,4 @@
-"""A molecule as Molion sends it (the `structures` of a `card` request, which is also what
+"""A molecule as Rubiture sends it (the `structures` of a `card` request, which is also what
 `get-structure` returns): atoms with their perceived aromaticity, hydrogens and symmetry
 class, and bonds by position in the atom list.
 

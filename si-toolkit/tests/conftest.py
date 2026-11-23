@@ -1,4 +1,4 @@
-"""The plugin without Molion: a fake host that answers its calls from a script."""
+"""The plugin without Rubiture: a fake host that answers its calls from a script."""
 
 import json
 import os
@@ -8,8 +8,8 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT)
 
 
-class FakeMolion:
-    """Plays Molion for Host: records what the plugin sends, answers calls by method.
+class FakeRubiture:
+    """Plays Rubiture for Host: records what the plugin sends, answers calls by method.
 
     `answers` maps a method (or "scene:<operation>") to a result or a function of the params.
     A function may raise `Refuse` to answer with an error.
@@ -59,7 +59,7 @@ class FakeMolion:
 
 
 class Refuse(Exception):
-    """Raised by an answer function: Molion answers the call with this error."""
+    """Raised by an answer function: Rubiture answers the call with this error."""
 
 
 # Ibuprofen, as get-analysis describes it.

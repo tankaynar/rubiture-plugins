@@ -1,4 +1,4 @@
-"""The pictures: within Molion's limits, lobes closed and signed, centred on the nucleus."""
+"""The pictures: within Rubiture's limits, lobes closed and signed, centred on the nucleus."""
 
 import math
 
@@ -6,7 +6,7 @@ import pytest
 
 from orbitals import drawing, model
 
-PICTURE_LIMIT = 10_000      # ops + polygon points: Molion's limit for a picture
+PICTURE_LIMIT = 10_000      # ops + polygon points: Rubiture's limit for a picture
 PREVIEW_LIMIT = 2_000
 
 

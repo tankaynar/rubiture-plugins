@@ -1,4 +1,4 @@
-"""The plugin without Molion or a model: a fake host answering from a script."""
+"""The plugin without Rubiture or a model: a fake host answering from a script."""
 
 import json
 import os
@@ -8,8 +8,8 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT)
 
 
-class FakeMolion:
-    """Plays Molion for Host: records what the plugin sends, answers calls by method.
+class FakeRubiture:
+    """Plays Rubiture for Host: records what the plugin sends, answers calls by method.
 
     `answers` maps a method (or "scene:<operation>") to a result, a function of the params, or
     an exception instance to answer with an error. Notifications are recorded, not answered.

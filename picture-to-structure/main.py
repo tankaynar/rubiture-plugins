@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
-"""Picture to Structure — a Molion plugin: a picture of a molecule becomes a structure.
+"""Picture to Structure — a Rubiture plugin: a picture of a molecule becomes a structure.
 
 It contributes one action, Convert to Structure, offered while one picture is selected. The
 picture is read with MolScribe (an ONNX export, run by onnxruntime on this computer) and
 replaced by the molecule, laid out as it was drawn. The model is downloaded the first time,
-after the user agrees, into the data folder Molion gives the plugin; pictures never leave the
+after the user agrees, into the data folder Rubiture gives the plugin; pictures never leave the
 computer.
 
     python3 main.py
 
-The protocol: Molion's plugin protocol, newline-delimited JSON-RPC 2.0 on stdin/stdout.
+The protocol: Rubiture's plugin protocol, newline-delimited JSON-RPC 2.0 on stdin/stdout.
 Logs go to stderr only; stdout is the channel.
 
 In a development run the system Python usually lacks onnxruntime, numpy and Pillow. If a

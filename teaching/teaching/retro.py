@@ -1,7 +1,7 @@
 """Retrosynthetic Disconnect: a bond cut into synthons, drawn beside the target with the retro
 arrow and a wavy line across the bond.
 
-The synthons come from Molion's get-fragments (Molion cuts the bond and puts the
+The synthons come from Rubiture's get-fragments (Rubiture cuts the bond and puts the
 charges on); this file offers the ways of cutting it, and lays the result out.
 """
 

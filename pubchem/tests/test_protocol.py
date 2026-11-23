@@ -1,4 +1,4 @@
-"""main.py as Molion runs it: JSON-RPC requests in, answers out. The network is faked, except
+"""main.py as Rubiture runs it: JSON-RPC requests in, answers out. The network is faked, except
 in the subprocess test, which sends nothing that would reach it."""
 
 import json
@@ -29,7 +29,7 @@ def invoke(cid, id=3):
             'params': {'contributionId': 'search', 'kind': 'command', 'context': {}, 'result': {'id': cid}}}
 
 
-def test_a_query_answers_rows_molion_can_show(heme_pubchem):
+def test_a_query_answers_rows_rubiture_can_show(heme_pubchem):
     [reply] = ask(PubChemPlugin(heme_pubchem), query('heme'))
     rows = reply['result']['results']
     assert rows[0]['id'] == '26945'

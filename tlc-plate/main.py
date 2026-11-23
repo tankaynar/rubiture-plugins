@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
-"""TLC Plate — a Molion plugin: thin-layer chromatography plates as pictures it draws.
+"""TLC Plate — a Rubiture plugin: thin-layer chromatography plates as pictures it draws.
 
 New TLC Plate places a plate (starting material, co-spot, reaction). Double-clicking it, or
-Edit TLC… in the palette, opens the plate in Molion's dialog: click to add a spot, drag to move
+Edit TLC… in the palette, opens the plate in Rubiture's dialog: click to add a spot, drag to move
 it, and set its Rf, intensity, shape and colour, the lanes and co-spots, the stain and the
 eluent. The plate's settings are palette actions too, offered while a plate is selected.
 
     python3 main.py
 
-The protocol: Molion's plugin protocol, newline-delimited JSON-RPC 2.0 on stdin/stdout.
+The protocol: Rubiture's plugin protocol, newline-delimited JSON-RPC 2.0 on stdin/stdout.
 Logs go to stderr only; stdout is the channel. Standard library only.
 """
 
@@ -58,7 +58,7 @@ def serve(host: Host) -> int:
                 return 0
             else:
                 result = {}
-        except Exception as error:            # Molion shows it; the plugin keeps running
+        except Exception as error:            # Rubiture shows it; the plugin keeps running
             log(traceback.format_exc())
             if request_id is not None:
                 host.reply(request_id, error=str(error))

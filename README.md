@@ -1,6 +1,6 @@
-# Molion plugins
+# Rubiture plugins
 
-Plugins for the Molion chemical drawing app:
+Plugins for the Rubiture chemical drawing app:
 
 | Folder | Plugin | What it adds |
 |---|---|---|

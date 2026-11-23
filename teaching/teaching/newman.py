@@ -123,7 +123,7 @@ def drawing(newman: dict) -> dict:
 
 
 class Session:
-    """Edit Newman: the projection turned on a working copy. Handlers never call Molion."""
+    """Edit Newman: the projection turned on a working copy. Handlers never call Rubiture."""
 
     def __init__(self, newman: dict) -> None:
         self.newman = copy_of(newman)

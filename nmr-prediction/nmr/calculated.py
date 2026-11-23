@@ -1,7 +1,7 @@
-"""Shifts calculated with the user's own ORCA, through Molion's `calculate` (the `orca`
+"""Shifts calculated with the user's own ORCA, through Rubiture's `calculate` (the `orca`
 capability): asked about on every card, started only from the "Calculate NMR with ORCA" action.
 
-Molion answers per molecule with a state, and once done, the server's result (`shifts_ppm`, per
+Rubiture answers per molecule with a state, and once done, the server's result (`shifts_ppm`, per
 atom of the calculated geometry) and `atoms`: each drawn atom's index into it, with the indices
 of the hydrogens the drawing leaves implicit. A heavy atom's ¹H shift is the mean over its
 hydrogens, drawn or implicit; a symmetry class's, the mean over its atoms.
@@ -38,7 +38,7 @@ def ask(host, document_id: str, molecule_id: str, start: bool = False) -> Calcul
         reply = host.call('calculate', {'documentId': document_id, 'moleculeId': molecule_id,
                                         'kind': KIND, 'start': start})
     except HostError as error:
-        # Not allowed, or a Molion that predates calculate: the card is as it always was
+        # Not allowed, or a Rubiture that predates calculate: the card is as it always was
         return Calculation('unavailable', str(error))
     calculation = Calculation(reply.get('state') or 'unavailable', reply.get('message'), reply.get('methodLine'))
     if calculation.done:

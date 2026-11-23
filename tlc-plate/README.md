@@ -1,9 +1,9 @@
 # TLC Plate
 
-A Molion plugin that ships with Molion: thin-layer chromatography plates, drawn as pictures
+A Rubiture plugin that ships with Rubiture: thin-layer chromatography plates, drawn as pictures
 that stay sharp at any zoom and export as vectors to SVG and PDF.
 
-Turn it on in **Settings → Plugins → Included with Molion**. Then press Space and choose
+Turn it on in **Settings → Plugins → Included with Rubiture**. Then press Space and choose
 **New TLC Plate**, and click where it goes. A new plate has three lanes: starting material
 (SM), a co-spot of the two (Co) and the reaction (Rxn).
 
@@ -37,7 +37,7 @@ and **Label Lanes…** (type "SM, Co, Rxn, P"; extra labels add lanes), **Add La
 
 The plate is a picture this plugin owns (`add-image` with `locks` and `pluginData`); the
 plate's lanes and spots are its `pluginData`, and the picture is always redrawn from them.
-Edit TLC… uses Molion's `dialog` request: Molion draws the dialog, and sends a `dialogEvent`
+Edit TLC… uses Rubiture's `dialog` request: Rubiture draws the dialog, and sends a `dialogEvent`
 for every click, drag and change, which the plugin answers with the redrawn plate. The
 settings are two-step actions (`query` on an `own-image` action).
 

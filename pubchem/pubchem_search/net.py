@@ -1,7 +1,7 @@
 """The one way this plugin reaches the network: HTTPS GETs to PubChem.
 
-Molion runs the plugin only once the user has turned it on (Settings → Plugins), and grants it
-the network for that (its `network` capability); Molion itself never goes online.
+Rubiture runs the plugin only once the user has turned it on (Settings → Plugins), and grants it
+the network for that (its `network` capability); Rubiture itself never goes online.
 """
 
 from __future__ import annotations
@@ -11,7 +11,7 @@ import ssl
 import sys
 import urllib.request
 
-USER_AGENT = 'Molion-PubChem/1.0'
+USER_AGENT = 'Rubiture-PubChem/1.0'
 
 # Where operating systems keep their root certificates as one PEM file: macOS (the system
 # bundle Apple maintains), Debian/Ubuntu/Arch, Fedora/RHEL, openSUSE, Alpine.

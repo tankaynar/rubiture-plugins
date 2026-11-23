@@ -1,6 +1,6 @@
 """The SI card: the selection's HRMS line, elemental analysis and SI stub, each with Copy.
 
-Molion draws the card from these blocks: each structure a labelled note (its number, else its
+Rubiture draws the card from these blocks: each structure a labelled note (its number, else its
 formula, bold at the left). A note is at most 200 characters and a view at most 10 blocks, so
 the card shows a short form of each structure; its Copy carries the full text (at most 8000
 characters).
@@ -75,14 +75,14 @@ def _stub_row(compound) -> dict:
 
 
 def answer(host, params: dict) -> dict:
-    """The card follows the selection only, never the adduct last copied: Molion asks it again
+    """The card follows the selection only, never the adduct last copied: Rubiture asks it again
     when the drawing changes, so anything else it showed would be out of date until then. Its
     HRMS views are the two adducts most papers report; Copy HRMS Line… offers the rest."""
     ids = [s['moleculeId'] for s in params.get('structures') or [] if s.get('moleculeId')]
     compounds = [c for c in scope.of_molecules(host, ids) if c.structure]
     if not compounds:
         return {'message': 'Select a structure.'}
-    # Numbered first, in number order, as the SI lists them; the rest as Molion sent them.
+    # Numbered first, in number order, as the SI lists them; the rest as Rubiture sent them.
     key = numbers.sort_key_for([c.number for c in compounds if c.number])
     compounds.sort(key=lambda c: (0, key(c.number)) if c.number else (1, (0, 0, '')))
 

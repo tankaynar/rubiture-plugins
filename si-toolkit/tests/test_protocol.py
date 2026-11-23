@@ -1,25 +1,25 @@
-"""main.py as Molion runs it: the calls each contribution makes, and what it answers."""
+"""main.py as Rubiture runs it: the calls each contribution makes, and what it answers."""
 
 import copy
 import json
 import subprocess
 import sys
 
-from conftest import IBUPROFEN, ROOT, FakeMolion, Refuse
+from conftest import IBUPROFEN, ROOT, FakeRubiture, Refuse
 
 import main
 from si.rpc import Host
 
 
-def run(molion, *requests):
+def run(rubiture, *requests):
     queue = [json.dumps(request) for request in requests]
 
     def readline():
-        if molion.pending():
-            return molion.readline()
+        if rubiture.pending():
+            return rubiture.readline()
         return queue.pop(0) + '\n' if queue else ''
-    main.serve(Host(readline, molion.write))
-    return molion
+    main.serve(Host(readline, rubiture.write))
+    return rubiture
 
 
 def request(method, params, request_id=5):
@@ -37,8 +37,8 @@ def query(text=''):
     return request('query', {'contributionId': 'copy-hrms', 'text': text})
 
 
-def final(molion, request_id=5):
-    return [reply for reply in molion.replies if reply.get('id') == request_id][-1]['result']
+def final(rubiture, request_id=5):
+    return [reply for reply in rubiture.replies if reply.get('id') == request_id][-1]['result']
 
 
 def molecule(molecule_id, atom, number=None):
@@ -71,7 +71,7 @@ NAMES_FAIL = False
 
 
 def drawing(selection=None, molecules=None):
-    return FakeMolion({
+    return FakeRubiture({
         'scene:get-molecules': molecules if molecules is not None else [molecule('m1', 'a1', '2'), molecule('m2', 'a2', '1')],
         'scene:get-selection': {'atoms': selection or [], 'bonds': []},
         'scene:get-analysis': analysis,
@@ -82,13 +82,13 @@ def drawing(selection=None, molecules=None):
 
 
 def test_initialize_names_the_plugin():
-    molion = run(FakeMolion(), request('initialize', {}, 1))
-    assert final(molion, 1)['name'] == 'SI Toolkit'
+    rubiture = run(FakeRubiture(), request('initialize', {}, 1))
+    assert final(rubiture, 1)['name'] == 'SI Toolkit'
 
 
 def test_the_adducts_are_listed_as_the_search_opens():
-    molion = run(drawing(selection=['a1']), query())
-    rows = final(molion)['results']
+    rubiture = run(drawing(selection=['a1']), query())
+    rows = final(rubiture)['results']
     assert rows[0] == {'id': 'esi-mh', 'title': '[M+H]⁺', 'section': 'ESI', 'subtitle': 'm/z 207.1380 · C₁₃H₁₉O₂'}
     assert {r['id'] for r in rows} >= {'esi-mna', 'esi-m-h', 'ei-m'}
 
@@ -103,76 +103,76 @@ def test_typing_filters_the_adducts():
 
 
 def test_several_structures_get_a_line_each():
-    molion = run(drawing(), dict(query('na'), id=4), invoke('copy-hrms', 'esi-mna'))
-    assert final(molion, 4)['results'][0]['subtitle'] == 'One line for each of 2 structures'
-    [copied] = molion.calls('clipboard')
+    rubiture = run(drawing(), dict(query('na'), id=4), invoke('copy-hrms', 'esi-mna'))
+    assert final(rubiture, 4)['results'][0]['subtitle'] == 'One line for each of 2 structures'
+    [copied] = rubiture.calls('clipboard')
     assert copied['text'].count('[M+Na]⁺ calcd for C₁₃H₁₈NaO₂ 229.1199, found ') == 2
-    assert final(molion)['message'] == 'Copied 2 HRMS lines'
+    assert final(rubiture)['message'] == 'Copied 2 HRMS lines'
 
 
 def test_the_adduct_chosen_comes_first_next_time(tmp_path):
-    molion = run(drawing(), request('initialize', {'dataDir': str(tmp_path)}, 1),
+    rubiture = run(drawing(), request('initialize', {'dataDir': str(tmp_path)}, 1),
                  invoke('copy-hrms', 'esi-mna'))
-    assert final(molion)['ok'] is True
-    molion = run(drawing(), request('initialize', {'dataDir': str(tmp_path)}, 1), query())
-    assert final(molion)['results'][0]['id'] == 'esi-mna'
+    assert final(rubiture)['ok'] is True
+    rubiture = run(drawing(), request('initialize', {'dataDir': str(tmp_path)}, 1), query())
+    assert final(rubiture)['results'][0]['id'] == 'esi-mna'
 
 
 def test_with_nothing_drawn_there_is_nothing_to_copy():
-    molion = run(drawing(molecules=[]), query(), invoke('copy-elemental'))
-    assert final(molion) == {'ok': False, 'error': 'Draw a structure first.'}
-    assert molion.calls('clipboard') == []
+    rubiture = run(drawing(molecules=[]), query(), invoke('copy-elemental'))
+    assert final(rubiture) == {'ok': False, 'error': 'Draw a structure first.'}
+    assert rubiture.calls('clipboard') == []
 
 
 def test_copy_elemental_analysis_of_the_selection():
-    molion = run(drawing(selection=['a2']), invoke('copy-elemental'))
-    [asked] = molion.calls('scene:get-analysis')
+    rubiture = run(drawing(selection=['a2']), invoke('copy-elemental'))
+    [asked] = rubiture.calls('scene:get-analysis')
     assert asked['payload'] == {'moleculeIds': ['m2']}
-    [copied] = molion.calls('clipboard')
+    [copied] = rubiture.calls('clipboard')
     assert copied['text'] == 'Anal. Calcd for C₁₃H₁₈O₂: C, 75.69; H, 8.80'
 
 
 def test_the_stub_lists_every_compound_in_number_order():
-    molion = run(drawing(selection=['a1']), invoke('copy-stub'))
-    [copied] = molion.calls('clipboard')
+    rubiture = run(drawing(selection=['a1']), invoke('copy-stub'))
+    [copied] = rubiture.calls('clipboard')
     blocks = copied['text'].split('\n\n')
     assert blocks[0].startswith('1: name of m2\n')
     assert blocks[1].startswith('2: name of m1\n')
-    assert final(molion)['message'] == 'Copied the SI stub for 2 compounds'
+    assert final(rubiture)['message'] == 'Copied the SI stub for 2 compounds'
 
 
 def test_the_stub_goes_without_names_when_the_namer_cannot_run():
     global NAMES_FAIL
     NAMES_FAIL = True
     try:
-        molion = run(drawing(), invoke('copy-stub'))
+        rubiture = run(drawing(), invoke('copy-stub'))
     finally:
         NAMES_FAIL = False
-    [copied] = molion.calls('clipboard')
+    [copied] = rubiture.calls('clipboard')
     assert copied['text'].startswith('1\nC₁₃H₁₈O₂; HRMS')
 
 
 def test_export_saves_a_csv():
-    molion = run(drawing(), invoke('export-stub'))
-    [saved] = molion.calls('saveFile')
+    rubiture = run(drawing(), invoke('export-stub'))
+    [saved] = rubiture.calls('saveFile')
     assert (saved['extension'], saved['suggestedName']) == ('csv', 'si-stub.csv')
     assert saved['content'].splitlines()[1].startswith('1,name of m2,C13H18O2,ESI,[M+H]⁺,207.1380,Sm2,Im2')
-    assert final(molion) == {'ok': True, 'message': 'Saved si-stub.csv'}
+    assert final(rubiture) == {'ok': True, 'message': 'Saved si-stub.csv'}
 
 
 def test_a_cancelled_export_is_not_an_error():
-    molion = drawing()
-    molion.answers['saveFile'] = {'cancelled': True}
-    assert final(run(molion, invoke('export-stub'))) == {'ok': True}
+    rubiture = drawing()
+    rubiture.answers['saveFile'] = {'cancelled': True}
+    assert final(run(rubiture, invoke('export-stub'))) == {'ok': True}
 
 
 def test_the_card_shows_each_view_with_its_copy(tmp_path):
     # The adduct copied last does not reach the card: the card would show it only once
     # the drawing next changed.
-    molion = run(drawing(), request('initialize', {'dataDir': str(tmp_path)}, 1),
+    rubiture = run(drawing(), request('initialize', {'dataDir': str(tmp_path)}, 1),
                  dict(invoke('copy-hrms', 'esi-mk'), id=4),
                  request('card', {'cardId': 'si', 'scope': 'selection', 'structures': [{'moleculeId': 'm1'}]}))
-    answer = final(molion)
+    answer = final(rubiture)
     assert [(v['id'], v['label']) for v in answer['views']] == [
         ('mh', '[M+H]⁺'), ('mna', '[M+Na]⁺'), ('anal', 'Anal.'), ('stub', 'SI')]
     mh_view, mna_view, anal_view, stub_view = answer['views']
@@ -185,14 +185,14 @@ def test_the_card_shows_each_view_with_its_copy(tmp_path):
     assert stub_view['blocks'] == [{'type': 'note', 'label': '2', 'text': 'C₁₃H₁₈O₂ · Sm1'}]
     assert answer['subtitle'] == 'Calculated'
     # The card never waits on the namer.
-    assert all('name' not in c['payload']['targets'] for c in molion.calls('scene:get-strings'))
-    assert len(molion.calls('clipboard')) == 1      # the invoke's; a card never copies
+    assert all('name' not in c['payload']['targets'] for c in rubiture.calls('scene:get-strings'))
+    assert len(rubiture.calls('clipboard')) == 1      # the invoke's; a card never copies
 
 
 def test_every_card_string_fits():
     many = [molecule(f'm{i}', f'a{i}', str(i)) for i in range(15)]
-    molion = drawing(molecules=many)
-    answer = final(run(molion, request('card', {'cardId': 'si', 'scope': 'document',
+    rubiture = drawing(molecules=many)
+    answer = final(run(rubiture, request('card', {'cardId': 'si', 'scope': 'document',
                                                  'structures': [{'moleculeId': m['id']} for m in many]})))
     for view in answer['views']:
         assert len(view['blocks']) <= 10
@@ -207,21 +207,21 @@ def test_runs_as_a_process():
 
 
 def test_a_stub_without_names_says_why():
-    molion = drawing()
+    rubiture = drawing()
 
     def unnamed(params):
         reply = strings(dict(params, payload=dict(params['payload'], targets=['smiles', 'inchi'])))
         for found in reply['molecules']:
             found['nameError'] = 'Names cannot be checked: the namer is not built.'
         return reply
-    molion.answers['scene:get-strings'] = unnamed
-    assert final(run(molion, invoke('copy-stub')))['message'] == (
+    rubiture.answers['scene:get-strings'] = unnamed
+    assert final(run(rubiture, invoke('copy-stub')))['message'] == (
         'Copied the SI stub for 2 compounds, without names (Names cannot be checked: the namer is not built)')
 
 
 def test_several_structures_on_the_card_are_told_apart_by_number_or_formula():
-    molion = drawing(molecules=[molecule('m1', 'a1', '10'), molecule('m2', 'a2'), molecule('m3', 'a3', '2')])
-    answer = final(run(molion, request('card', {'cardId': 'si', 'scope': 'document', 'structures': [
+    rubiture = drawing(molecules=[molecule('m1', 'a1', '10'), molecule('m2', 'a2'), molecule('m3', 'a3', '2')])
+    answer = final(run(rubiture, request('card', {'cardId': 'si', 'scope': 'document', 'structures': [
         {'moleculeId': 'm1'}, {'moleculeId': 'm2'}, {'moleculeId': 'm3'}]})))
     # Numbered first, in number order.
     assert [block['label'] for block in answer['views'][0]['blocks']] == ['2', '10', 'C₁₃H₁₈O₂']

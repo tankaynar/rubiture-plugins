@@ -1,4 +1,4 @@
-"""main.py as Molion runs it: JSON-RPC over stdin and stdout."""
+"""main.py as Rubiture runs it: JSON-RPC over stdin and stdout."""
 
 import json
 import os
@@ -20,7 +20,7 @@ def test_initialize_card_shutdown(raw):
         {'jsonrpc': '2.0', 'id': 1, 'method': 'initialize', 'params': {'protocolVersion': 1}},
         {'jsonrpc': '2.0', 'id': 2, 'method': 'card',
          'params': {'cardId': 'nmr', 'documentId': 'd', 'scope': 'selection', 'structures': [raw['toluene']]}},
-        # Molion's answer to the card's calculate: nothing calculated yet
+        # Rubiture's answer to the card's calculate: nothing calculated yet
         {'jsonrpc': '2.0', 'id': 1000001, 'result': {'state': 'none'}},
         {'jsonrpc': '2.0', 'method': 'shutdown'},
     )

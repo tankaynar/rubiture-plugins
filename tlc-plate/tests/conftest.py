@@ -1,4 +1,4 @@
-"""The plugin without Molion: a fake host that answers its calls from a script."""
+"""The plugin without Rubiture: a fake host that answers its calls from a script."""
 
 import json
 import os
@@ -10,11 +10,11 @@ sys.path.insert(0, ROOT)
 from tlc import model  # noqa: E402
 
 
-class FakeMolion:
-    """Plays Molion for Host: records what the plugin sends, answers calls by method.
+class FakeRubiture:
+    """Plays Rubiture for Host: records what the plugin sends, answers calls by method.
 
     `answers` maps a method (or "scene:<operation>") to a result or a function of the params.
-    `inbound` is a list of requests Molion sends while the plugin waits on a call of that
+    `inbound` is a list of requests Rubiture sends while the plugin waits on a call of that
     method, e.g. dialogEvents while a dialog is open; their replies are kept in `replies`.
     """
 

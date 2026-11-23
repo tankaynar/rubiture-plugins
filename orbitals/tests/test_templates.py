@@ -1,4 +1,4 @@
-"""The scene templates in templates/: up to date with the generator, within Molion's limits."""
+"""The scene templates in templates/: up to date with the generator, within Rubiture's limits."""
 
 import json
 import os

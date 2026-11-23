@@ -4,9 +4,9 @@
     python3 tools/build_templates.py          # write them
     python3 tools/build_templates.py --check  # exit 1 if any is out of date (tests run this)
 
-Each template is {"items": [...]}, items being the payloads of Molion's add-image,
-add-annotation and add-from-molfile operations (Molion's scene templates).
-Molecules are molfiles drawn with 1.5 Å bonds, which Molion reads at its bond length (50.8);
+Each template is {"items": [...]}, items being the payloads of Rubiture's add-image,
+add-annotation and add-from-molfile operations (Rubiture's scene templates).
+Molecules are molfiles drawn with 1.5 Å bonds, which Rubiture reads at its bond length (50.8);
 add-from-molfile centres a molecule's atoms on its x, y, so orbitals here sit on its atoms.
 Standard library only, like the plugin.
 """
@@ -23,7 +23,7 @@ sys.path.insert(0, ROOT)
 
 from orbitals import drawing, model  # noqa: E402
 
-BOND = 50.8                 # Molion's bond, canvas units
+BOND = 50.8                 # Rubiture's bond, canvas units
 ANGSTROM_BOND = 1.5         # the same bond in a molfile
 LOCKS = ['replace', 'crop', 'rotate']
 
@@ -48,7 +48,7 @@ def molecule(atoms: list[tuple[str, float, float]], bonds: list[tuple[int, int, 
     ys = [y for _, _, y in atoms]
     cx, cy = (min(xs) + max(xs)) / 2, (min(ys) + max(ys)) / 2
     scale = ANGSTROM_BOND / BOND
-    lines = ['', '  Molion Orbitals', '', f'{len(atoms):3d}{len(bonds):3d}  0  0  0  0  0  0  0  0999 V2000']
+    lines = ['', '  Rubiture Orbitals', '', f'{len(atoms):3d}{len(bonds):3d}  0  0  0  0  0  0  0  0999 V2000']
     for element, x, y in atoms:
         lines.append(f'{x * scale:10.4f}{-y * scale:10.4f}{0.0:10.4f} {element:<3s} 0  0  0  0  0  0  0  0  0  0  0  0')
     for a, b, order in bonds:

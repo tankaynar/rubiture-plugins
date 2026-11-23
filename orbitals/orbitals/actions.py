@@ -2,7 +2,7 @@
 
 An orbital is a picture this plugin owns, with the orbital as pluginData, so it is redrawn
 from data rather than edited as pixels. It is locked against being replaced, cropped or turned
-by Molion's own commands (its angle is the plugin's, so its signs stay upright); it moves,
+by Rubiture's own commands (its angle is the plugin's, so its signs stay upright); it moves,
 resizes and deletes like any picture. Every edit is one `update-image`: one undo step.
 """
 

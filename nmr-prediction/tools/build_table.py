@@ -4,7 +4,7 @@
     python tools/build_table.py --sd nmrshiftdb2withsignals.sd [--out data/shifts.bin.gz]
                                 [--holdout 20]
 
-Needs RDKit 2025.9.2, the version Molion perceives structures with.
+Needs RDKit 2025.9.2, the version Rubiture perceives structures with.
 
 nmrshiftdb2withsignals.sd is downloaded from https://sourceforge.net/projects/nmrshiftdb2/
 (files/data). Its data is under the nmrshiftdb2 Database License, and so is the table this

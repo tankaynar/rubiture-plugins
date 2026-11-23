@@ -1,4 +1,4 @@
-"""An orbital as a vector picture: Molion's display-list ops, in canvas units.
+"""An orbital as a vector picture: Rubiture's display-list ops, in canvas units.
 
 Each orbital is a polar plot of its angular part, r = L·f(θ)², around its nucleus; the lobes
 are where f keeps one sign, so each lobe is a closed polygon from the nucleus out and back.
@@ -11,7 +11,7 @@ import math
 
 from . import model
 
-# A lobe's reach: about a bond's length (Molion draws bonds 50.8 long), as textbooks draw them.
+# A lobe's reach: about a bond's length (Rubiture draws bonds 50.8 long), as textbooks draw them.
 LOBE = 56.0
 SAMPLES = 120
 PAD = 3.0

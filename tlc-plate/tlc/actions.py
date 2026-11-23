@@ -1,6 +1,6 @@
 """What each contribution in plugin.json does.
 
-The plate is a picture this plugin owns: placed with locks, so Molion's own image commands
+The plate is a picture this plugin owns: placed with locks, so Rubiture's own image commands
 cannot replace, stretch or fade it, and with the plate as pluginData, so it is redrawn from
 data rather than edited as pixels. Every action edits the plate it is given and saves it in
 one `update-image`, so each is one undo step.

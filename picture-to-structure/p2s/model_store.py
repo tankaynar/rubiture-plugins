@@ -5,7 +5,7 @@ folder is renamed to `model-<version>/` only when every file has passed. A downl
 therefore never looks finished, and the next attempt starts again cleanly. A `verified` file
 inside marks a finished folder, so the model is not hashed again on every launch.
 
-MOLION_P2S_MODEL_DIR points at a model folder elsewhere (one exported locally with
+RUBITURE_P2S_MODEL_DIR points at a model folder elsewhere (one exported locally with
 tools/export_onnx.py), for development before a release carries the files.
 """
 
@@ -21,10 +21,10 @@ import urllib.request
 from dataclasses import dataclass
 from typing import Callable
 
-MODEL_DIR_ENV = 'MOLION_P2S_MODEL_DIR'
+MODEL_DIR_ENV = 'RUBITURE_P2S_MODEL_DIR'
 VERSION = 'v1'
-SOURCE = 'github.com/tankaynar/molion-plugins'
-_RELEASE = 'https://github.com/tankaynar/molion-plugins/releases/download/p2s-model-v1/'
+SOURCE = 'github.com/tankaynar/rubiture-plugins'
+_RELEASE = 'https://github.com/tankaynar/rubiture-plugins/releases/download/p2s-model-v1/'
 
 
 @dataclass(frozen=True)
@@ -145,7 +145,7 @@ class ModelStore:
         if self.ready():
             return self.folder
         if not self.data_dir:
-            raise ModelError('Molion gave Picture to Structure no folder to keep its model in.')
+            raise ModelError('Rubiture gave Picture to Structure no folder to keep its model in.')
         if not self.published:
             raise ModelError('The recognition model is not published yet.')
 

@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
-"""PubChem — a Molion plugin: Search PubChem… in the palette, and PubChem's own drawing of the
+"""PubChem — a Rubiture plugin: Search PubChem… in the palette, and PubChem's own drawing of the
 compound chosen, placed like a template.
 
-It contributes one two-step command. Molion asks it a `query` as the user types after choosing
+It contributes one two-step command. Rubiture asks it a `query` as the user types after choosing
 Search PubChem…, shows the rows it answers, and sends the chosen row back as an `invoke`; this
-answers with the compound's 2D record for Molion to place. It never reads or changes the
-drawing, and is the only part of Molion that goes online, once the user has turned it on.
+answers with the compound's 2D record for Rubiture to place. It never reads or changes the
+drawing, and is the only part of Rubiture that goes online, once the user has turned it on.
 
     python3 main.py
 
-The protocol: Molion's plugin protocol, newline-delimited JSON-RPC 2.0 on stdin/stdout.
+The protocol: Rubiture's plugin protocol, newline-delimited JSON-RPC 2.0 on stdin/stdout.
 Logs go to stderr only; stdout is the channel.
 """
 
@@ -57,7 +57,7 @@ def serve(lines, write, plugin: PubChemPlugin) -> int:
                 return 0
             else:
                 raise ValueError(f"unknown method '{method}'")
-        except Exception as error:            # Molion shows it; the plugin keeps running
+        except Exception as error:            # Rubiture shows it; the plugin keeps running
             log(traceback.format_exc())
             if request_id is not None:
                 write({'jsonrpc': '2.0', 'id': request_id, 'error': {'code': -32000, 'message': str(error)}})

@@ -1,4 +1,4 @@
-"""The card Molion shows: a ¹H and a ¹³C view, each a stick spectrum whose peaks are linked
+"""The card Rubiture shows: a ¹H and a ¹³C view, each a stick spectrum whose peaks are linked
 to the atoms they come from, with an SI-style line to copy.
 
 One peak per set of equivalent atoms (a symmetry class), so para-substituted benzene has two
@@ -76,7 +76,7 @@ def answer(params: dict, table, host=None) -> dict:
         notes.append({'type': 'note', 'text': 'Calculated with ' + '; '.join(method_lines) + '.'})
     if any(not p['_calculated'] for p in proton + carbon):
         notes.append({'type': 'note', 'text': DATA_NOTE})
-    # Running or queued, Molion shows the job's progress (and Cancel) in the card itself
+    # Running or queued, Rubiture shows the job's progress (and Cancel) in the card itself
     if any(c.state in ('none', 'failed') for c in calculations):
         notes.append({'type': 'button', 'label': calculated.BUTTON, 'action': calculated.ACTION})
 

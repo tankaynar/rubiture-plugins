@@ -1,8 +1,8 @@
-"""Edit Orbital: the orbital in Molion's dialog, edited on a working copy.
+"""Edit Orbital: the orbital in Rubiture's dialog, edited on a working copy.
 
-Molion draws the dialog from `request()` and sends a `dialogEvent` for every change;
+Rubiture draws the dialog from `request()` and sends a `dialogEvent` for every change;
 `handle()` changes the copy and answers with the new picture. Nothing reaches the document
-until Done, when the action saves the copy (one undo step). Handlers never call Molion: it is
+until Done, when the action saves the copy (one undo step). Handlers never call Rubiture: it is
 still waiting on the `dialog` request.
 """
 

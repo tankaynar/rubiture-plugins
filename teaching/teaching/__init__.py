@@ -1,1 +1,1 @@
-"""Teaching: a Molion plugin for teaching organic chemistry."""
+"""Teaching: a Rubiture plugin for teaching organic chemistry."""

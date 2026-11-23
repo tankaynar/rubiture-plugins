@@ -1,9 +1,9 @@
 # SI Toolkit
 
-A Molion plugin that ships with Molion: the calculated numbers a paper's supporting
+A Rubiture plugin that ships with Rubiture: the calculated numbers a paper's supporting
 information prints for each compound, ready to paste.
 
-Turn it on in **Settings → Plugins → Included with Molion**. Then press Space:
+Turn it on in **Settings → Plugins → Included with Rubiture**. Then press Space:
 
 - **Copy HRMS Line…** lists the adducts at once: ESI [M+H]⁺, [M+Na]⁺, [M+K]⁺, [M+NH₄]⁺,
   [M−H]⁻ and [M+Cl]⁻, APCI [M+H]⁺, and EI M⁺·, each with its m/z. Type to narrow the list
@@ -28,15 +28,15 @@ Nothing is selected: all of the drawing. A structure drawn as an ion is measured
 
 ## How the numbers are made
 
-Molion's chemistry server gives each structure's composition and exact mass: the most
+Rubiture's chemistry server gives each structure's composition and exact mass: the most
 abundant isotope of each element, a drawn isotope its own, with the electrons of a drawn ion
 allowed for. The plugin adds the adduct's atoms (AME2020 nuclide masses) and takes away one
 electron for each positive charge, or adds one for each negative charge, then divides by the
 charge. m/z is given to four places, and percentages to two. Names are systematic names made on
-this machine by Molion, never looked up online.
+this machine by Rubiture, never looked up online.
 
 The plugin only reads the drawing. Its text reaches the clipboard and its file reaches the disk
-through Molion (`clipboard` and `saveFile`), so it needs `scene:read` and `files`, and never
+through Rubiture (`clipboard` and `saveFile`), so it needs `scene:read` and `files`, and never
 touches the filesystem itself.
 
 ## Tests

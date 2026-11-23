@@ -1,8 +1,8 @@
-"""An RDKit molecule as Molion describes a structure to plugins (the `structures` of a card
+"""An RDKit molecule as Rubiture describes a structure to plugins (the `structures` of a card
 request): what tools/build_table.py turns nmrshiftdb2's molecules into, so that codes are
-computed from the very same description at build time and in Molion.
+computed from the very same description at build time and in Rubiture.
 
-Molion perceives structures with RDKit 2025.9.2 and these rules: RDKit's default aromaticity,
+Rubiture perceives structures with RDKit 2025.9.2 and these rules: RDKit's default aromaticity,
 total hydrogens including drawn H atoms, rings, and topological symmetry classes. Only what
 HOSE codes and multiplets read has to agree.
 """
@@ -32,7 +32,7 @@ _ORDER = {
 def describe(mol, molecule_id: str = 'm') -> dict:
     """A sanitised molecule → {moleculeId, focus, atoms, bonds}, atoms in the molecule's order.
 
-    Double-bond geometry is read from 2D coordinates, as Molion reads a drawing; a molecule
+    Double-bond geometry is read from 2D coordinates, as Rubiture reads a drawing; a molecule
     without them (from SMILES) is laid out first.
     """
     if mol.GetNumConformers() == 0:

@@ -10,7 +10,7 @@ MolScribe's wedge classes say which atom of a pair is in front but not which end
 upstream settles that with RDKit's stereocentre search. The model itself marks stereocentres,
 though: it spells them as SMILES does ("[C@@H]", "[C@]"). So the narrow end is the atom so
 marked, else the one with more bonds, else the one with more neighbours that are not chain
-ends; Molion perceives the stereo from the drawn wedge as from any other.
+ends; Rubiture perceives the stereo from the drawn wedge as from any other.
 """
 
 from __future__ import annotations

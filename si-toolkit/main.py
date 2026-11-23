@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""SI Toolkit — a Molion plugin for the supporting information of a paper.
+"""SI Toolkit — a Rubiture plugin for the supporting information of a paper.
 
 Copy HRMS Line… writes "HRMS (ESI) m/z: [M+Na]⁺ calcd for C₁₅H₂₀NaO₃ 271.1305, found " for the
 adduct chosen; Copy Elemental Analysis writes "Anal. Calcd for C₁₅H₂₀O₃: C, 72.55; H, 8.12";
@@ -8,7 +8,7 @@ HRMS, SMILES and InChI. The SI card shows the same for the selection.
 
     python3 main.py
 
-The protocol: Molion's plugin protocol, newline-delimited JSON-RPC 2.0 on stdin/stdout.
+The protocol: Rubiture's plugin protocol, newline-delimited JSON-RPC 2.0 on stdin/stdout.
 Logs go to stderr only; stdout is the channel. Standard library only.
 """
 
@@ -63,7 +63,7 @@ def serve(host: Host) -> int:
                 return 0
             else:
                 result = {}
-        except Exception as error:            # Molion shows it; the plugin keeps running
+        except Exception as error:            # Rubiture shows it; the plugin keeps running
             log(traceback.format_exc())
             if request_id is not None:
                 host.reply(request_id, error=str(error))

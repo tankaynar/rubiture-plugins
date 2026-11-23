@@ -1,9 +1,9 @@
-"""Edit TLC: the plate in Molion's dialog, edited on a working copy.
+"""Edit TLC: the plate in Rubiture's dialog, edited on a working copy.
 
-Molion draws the dialog from `request()` and sends a `dialogEvent` for everything the user
+Rubiture draws the dialog from `request()` and sends a `dialogEvent` for everything the user
 does; `handle()` changes the copy and answers with what to redraw. Nothing reaches the
 document until Done, when the action saves the copy (one undo step). Handlers never call
-Molion: it is still waiting on the `dialog` request, so a call would wait forever.
+Rubiture: it is still waiting on the `dialog` request, so a call would wait forever.
 """
 
 from __future__ import annotations
@@ -23,7 +23,7 @@ class Session:
         self.spot: tuple[int, int] | None = None      # (lane it is stored in, number)
         self._dragging: tuple[int, int] | None = None
 
-    # ── What Molion shows ────────────────────────────────────────────────
+    # ── What Rubiture shows ────────────────────────────────────────────────
 
     def request(self) -> dict:
         return {'title': 'Edit TLC Plate', 'doneLabel': 'Done',
@@ -70,7 +70,7 @@ class Session:
                                        {'value': 'cospot', 'label': 'Co-spot'}]})
         if entry['cospot'] is not None:
             first, second = entry['cospot']
-            # Molion refuses a choice whose value is not an option, so the pair is always offered.
+            # Rubiture refuses a choice whose value is not an option, so the pair is always offered.
             choices = sorted(set(samples) | {first, second})
             options = [{'value': str(other), 'label': self._lane_name(other)} for other in choices]
             fields.append({'type': 'choice', 'id': 'cospot-a', 'label': 'Of', 'value': str(first), 'options': options})

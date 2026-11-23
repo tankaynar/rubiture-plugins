@@ -1,7 +1,7 @@
 """What each contribution in plugin.json does.
 
 Every action is one invocation, so whatever it adds is one undo step. The chemistry —
-which group sits where in a projection, what a cut bond leaves — is Molion's (get-projection,
+which group sits where in a projection, what a cut bond leaves — is Rubiture's (get-projection,
 get-fragments); this plugin decides how it is laid out and when it is shown.
 """
 
@@ -43,7 +43,7 @@ class Actions:
         try:
             return handler()
         except HostError as error:
-            # Molion's refusal ("there is no open carbon chain…") is the user's answer.
+            # Rubiture's refusal ("there is no open carbon chain…") is the user's answer.
             text = str(error)
             return {'ok': False, 'error': text[:1].upper() + text[1:]}
 
@@ -156,7 +156,7 @@ class Actions:
         ends = [self.host.scene('get-atom', atomId=bond[end]) for end in ('atomA', 'atomB')]
         elements = {atom['id']: atom['element'] for atom in ends}
 
-        # Every way of cutting it, worked out before the dialog: its handler may not call Molion.
+        # Every way of cutting it, worked out before the dialog: its handler may not call Rubiture.
         tried = []
         first = self._fragments(bonds[0], 'heterolytic')
         if first is not None:

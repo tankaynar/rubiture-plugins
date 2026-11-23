@@ -1,1 +1,1 @@
-"""TLC Plate: a Molion plugin that draws thin-layer chromatography plates."""
+"""TLC Plate: a Rubiture plugin that draws thin-layer chromatography plates."""

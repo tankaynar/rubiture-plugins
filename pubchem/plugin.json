@@ -1,5 +1,5 @@
 {
-  "id": "molion.pubchem",
+  "id": "rubiture.pubchem",
   "name": "PubChem",
   "version": "1.0.0",
   "description": "Finds compounds on PubChem by name, CID or InChIKey and places PubChem's own drawing.",

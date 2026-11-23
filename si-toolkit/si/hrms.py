@@ -1,6 +1,6 @@
 """The calculated m/z of an ion, and the HRMS line an SI prints for it.
 
-Molion's `exactMass` is the structure as drawn: the most abundant isotope of each element (a
+Rubiture's `exactMass` is the structure as drawn: the most abundant isotope of each element (a
 drawn isotope its own), with the electrons of a drawn ion allowed for. An adduct adds or takes
 away atoms and electrons on top of that, with the masses below.
 """
@@ -12,7 +12,7 @@ from dataclasses import dataclass, field
 from si import formula as formulas
 
 # Nuclide masses (u), AME2020, as RDKit's table has them; the electron is CODATA 2018, the
-# value Molion's chemistry server subtracts for a drawn ion.
+# value Rubiture's chemistry server subtracts for a drawn ion.
 NUCLIDE = {
     'H': 1.00782503223,
     'C': 12.0,

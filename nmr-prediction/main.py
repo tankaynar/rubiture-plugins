@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
-"""NMR Prediction — a Molion plugin card with predicted ¹H and ¹³C spectra.
+"""NMR Prediction — a Rubiture plugin card with predicted ¹H and ¹³C spectra.
 
-Molion sends the selected structures as it perceives them (a `card`
+Rubiture sends the selected structures as it perceives them (a `card`
 request); this answers with the spectra to draw, each peak linked to its atoms. It never
 changes the drawing, and needs no network: the shift table is in data/.
 
-Where the user has ORCA set up in Molion, its "Calculate NMR with ORCA" action asks Molion to
+Where the user has ORCA set up in Rubiture, its "Calculate NMR with ORCA" action asks Rubiture to
 calculate the shifts (`calculate`, the `orca` capability), and the card shows them once done.
 
     python3 main.py [--data data/shifts.bin.gz]
 
-The protocol: Molion's plugin protocol, newline-delimited JSON-RPC 2.0 on stdin/stdout.
+The protocol: Rubiture's plugin protocol, newline-delimited JSON-RPC 2.0 on stdin/stdout.
 Logs go to stderr only; stdout is the channel.
 """
 
@@ -36,7 +36,7 @@ def log(message: str) -> None:
 
 
 def find_data(path: str) -> str:
-    """The table: as given, else beside the plugin (Molion starts it in its own folder; a
+    """The table: as given, else beside the plugin (Rubiture starts it in its own folder; a
     frozen build keeps its program in bin/)."""
     if os.path.isabs(path) or os.path.exists(path):
         return path
@@ -71,7 +71,7 @@ def main() -> int:
     parser.add_argument('--data', default=DEFAULT_DATA)
     args = parser.parse_args()
     # The protocol is UTF-8, but Windows pipes default to the ANSI code page (cp1252), which
-    # cannot encode the δ in a peak label. Molion sets PYTHONIOENCODING, but other hosts need not.
+    # cannot encode the δ in a peak label. Rubiture sets PYTHONIOENCODING, but other hosts need not.
     for stream in (sys.stdin, sys.stdout, sys.stderr):
         stream.reconfigure(encoding='utf-8')
 

@@ -1,5 +1,5 @@
 {
-  "id": "molion.picture-to-structure",
+  "id": "rubiture.picture-to-structure",
   "name": "Picture to Structure",
   "version": "1.0.0",
   "description": "Turns a picture of a molecule, from a paper or a screenshot, into a structure you can edit. Pictures never leave this computer.",

@@ -1,5 +1,5 @@
-"""Calculated shifts through Molion's `calculate`: what the card shows in each state, and the
-action that starts one. Molion is a stub here; its side is tested in Molion's own suite."""
+"""Calculated shifts through Rubiture's `calculate`: what the card shows in each state, and the
+action that starts one. Rubiture is a stub here; its side is tested in Rubiture's own suite."""
 
 import copy
 import io
@@ -34,7 +34,7 @@ def structure(raw, name):
 
 
 def done_reply(entry, carbon=None, proton=None):
-    """A done answer for `entry`, as Molion maps it: every drawn atom's index, then each heavy
+    """A done answer for `entry`, as Rubiture maps it: every drawn atom's index, then each heavy
     atom's implicit hydrogens after them, with shifts given per element by `carbon`/`proton`."""
     atoms, shifts = [], []
     for index, atom in enumerate(entry['atoms']):
@@ -77,7 +77,7 @@ def test_nothing_calculated_offers_the_button(table, raw):
 
 
 def test_running_shows_the_prediction_without_the_button(table, raw):
-    # Molion draws the job's progress in the card itself
+    # Rubiture draws the job's progress in the card itself
     result = answer(table, structure(raw, 'propan-1-ol'), StubHost({'state': 'running', 'progress': 0.4}))
     assert result['subtitle'] == 'Predicted'
     assert not blocks(result['views'][0], 'button')

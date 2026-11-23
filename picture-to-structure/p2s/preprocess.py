@@ -42,7 +42,7 @@ def load_rgb(data: bytes) -> np.ndarray:
 
 
 def crop_fractions(pixels: np.ndarray, crop: dict | None) -> tuple[np.ndarray, int, int]:
-    """Molion's crop (fractions of the source), so only the part that shows is read."""
+    """Rubiture's crop (fractions of the source), so only the part that shows is read."""
     if not crop:
         return pixels, 0, 0
     height, width = pixels.shape[:2]

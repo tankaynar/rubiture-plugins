@@ -1,4 +1,4 @@
-NMR Prediction for Molion
+NMR Prediction for Rubiture
 =========================
 
 The plugin's code is under the MIT licence (LICENSE).
@@ -14,7 +14,7 @@ It is a derivative database of nmrshiftdb2 (statistics of measured shifts, group
 surroundings of each atom; see data/SOURCE.md for how it was built) and is distributed under
 that same licence. The licence requires software that relies on the database to be released
 under an Open Source Initiative-approved licence: this plugin is, under the MIT licence. It is
-a separate program from Molion, which talks to it over Molion's plugin protocol and does not
+a separate program from Rubiture, which talks to it over Rubiture's plugin protocol and does not
 read the table itself.
 
 Method

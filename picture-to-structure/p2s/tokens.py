@@ -3,7 +3,7 @@
 MolScribe spells each atom as SMILES does: "C", "Cl", aromatic "c", or a bracket atom such as
 "[NH+]", "[13CH3]" or "[O-]". It also writes abbreviations it recognised in brackets ("[OMe]",
 "[Ph]", "[CO2Et]", "[R1]"), and R groups as numbered dummy atoms ("[2*]"). Those are kept
-as text, atom aliases Molion shows and expands as labels; nothing here knows what an
+as text, atom aliases Rubiture shows and expands as labels; nothing here knows what an
 abbreviation means. As upstream does, its abbreviation and R-group names are checked before
 element symbols, so tosyl is not tennessine nor aryl argon.
 """

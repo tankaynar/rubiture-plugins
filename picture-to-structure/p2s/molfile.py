@@ -1,8 +1,8 @@
-"""A recognised structure as a V2000 molfile, for Molion's `add-from-molfile`.
+"""A recognised structure as a V2000 molfile, for Rubiture's `add-from-molfile`.
 
-No chemistry happens here: atoms and bonds are written as recognised, and Molion reads the
+No chemistry happens here: atoms and bonds are written as recognised, and Rubiture reads the
 file (kekulising aromatic bonds, checking valence) the way it reads any other.
-Coordinates are scaled so the median bond is 1.5 Å, the length Molion draws as one standard
+Coordinates are scaled so the median bond is 1.5 Å, the length Rubiture draws as one standard
 bond, and flipped so y points up as molfiles expect.
 """
 
@@ -46,13 +46,13 @@ def write(structure: Structure) -> str:
     cy = sum(a.y for a in structure.atoms) / len(structure.atoms)
 
     labels = [tokens.parse(atom.label) for atom in structure.atoms]
-    lines = ['', '  Molion  picture-to-structure', '',
+    lines = ['', '  Rubiture  picture-to-structure', '',
              f'{len(structure.atoms):3d}{len(structure.bonds):3d}  0  0  0  0  0  0  0  0999 V2000']
 
     for atom, label in zip(structure.atoms, labels):
         x = (atom.x - cx) * scale
         y = -(atom.y - cy) * scale
-        # An abbreviation sits on a carbon; its alias line below is what Molion shows.
+        # An abbreviation sits on a carbon; its alias line below is what Rubiture shows.
         symbol = label.element or 'C'
         lines.append(f'{x:10.4f}{y:10.4f}{0:10.4f} {symbol:<3} 0  0  0  0  0  0  0  0  0  0  0  0')
 

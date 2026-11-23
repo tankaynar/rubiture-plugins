@@ -2,7 +2,7 @@
 
 For maintainers. The plugin runs MolScribe from three ONNX files on onnxruntime; these tools
 make them from MolScribe's own checkpoint and check them against upstream torch. Nothing here
-ships with Molion.
+ships with Rubiture.
 
 ## Environment
 
@@ -25,7 +25,7 @@ curl -L -o /tmp/swin_base_char_aux_1m680k.pth \
     --molscribe-src /tmp/MolScribe --out out --int8
 ```
 
-`out/` is gitignored. Its five files go, as they are, to the GitHub release `p2s-model-v1` of tankaynar/molion-plugins;
+`out/` is gitignored. Its five files go, as they are, to the GitHub release `p2s-model-v1` of tankaynar/rubiture-plugins;
 `p2s/model_store.py` pins each one's size and SHA-256, so a new export means new pins (and a
 new release tag and folder version, so an old download is never mixed with new files).
 
@@ -118,5 +118,5 @@ What the numbers settled:
   4 in 10 of them wrong, and catches 24% of all wrong results instead of 8%.
 
 Not measured: photographs of pages, hand drawing, and pictures holding more than one molecule
-(MolScribe reads one; the user crops first). Molion expands labels by its own rules, not
+(MolScribe reads one; the user crops first). Rubiture expands labels by its own rules, not
 MolScribe's, so a label one knows and the other does not can score differently in the app.

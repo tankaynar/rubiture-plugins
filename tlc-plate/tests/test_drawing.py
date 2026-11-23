@@ -1,4 +1,4 @@
-"""The picture: within Molion's limits, in its vocabulary, and hit-testable."""
+"""The picture: within Rubiture's limits, in its vocabulary, and hit-testable."""
 
 import re
 
@@ -34,7 +34,7 @@ def test_the_fullest_plate_is_within_the_picture_limit():
     assert count <= 10_000
 
 
-def test_every_op_is_one_molion_draws():
+def test_every_op_is_one_rubiture_draws():
     for stain in stains.STAINS:
         plate = full_plate()
         plate['stain'] = stain['id']

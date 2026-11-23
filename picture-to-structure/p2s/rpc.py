@@ -1,6 +1,6 @@
-"""Newline-delimited JSON-RPC 2.0 with Molion, both ways on one pipe.
+"""Newline-delimited JSON-RPC 2.0 with Rubiture, both ways on one pipe.
 
-While the plugin waits on its own call (a `dialog` stays open until the user answers), Molion
+While the plugin waits on its own call (a `dialog` stays open until the user answers), Rubiture
 may send requests of its own (`dialogEvent`); those are answered here, by whatever handler the
 waiting call installed.
 """
@@ -18,7 +18,7 @@ def log(message: str) -> None:
 
 
 class HostError(RuntimeError):
-    """Molion answered a call with an error."""
+    """Rubiture answered a call with an error."""
 
 
 class Host:
@@ -44,7 +44,7 @@ class Host:
         self.send({'jsonrpc': '2.0', 'method': method, 'params': params})
 
     def progress(self, message: str, fraction: float | None = None) -> None:
-        """Shown in Molion's status bar; each one also gives the action another 30 s."""
+        """Shown in Rubiture's status bar; each one also gives the action another 30 s."""
         self.notify('progress', {'message': message, 'fraction': fraction})
 
     def call(self, method: str, params: dict) -> dict:
@@ -54,7 +54,7 @@ class Host:
         while True:
             line = self._readline()
             if not line:
-                raise HostError('Molion closed the connection')
+                raise HostError('Rubiture closed the connection')
             line = line.strip()
             if not line:
                 continue

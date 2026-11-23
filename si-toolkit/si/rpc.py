@@ -1,7 +1,7 @@
-"""Newline-delimited JSON-RPC 2.0 with Molion, both ways on one pipe.
+"""Newline-delimited JSON-RPC 2.0 with Rubiture, both ways on one pipe.
 
 The plugin only reads the drawing and hands text back: to the clipboard, or to a file the user
-saves. Both go through Molion (`clipboard`, `saveFile`), so the plugin never touches the
+saves. Both go through Rubiture (`clipboard`, `saveFile`), so the plugin never touches the
 filesystem or the system clipboard itself.
 """
 
@@ -18,7 +18,7 @@ def log(message: str) -> None:
 
 
 class HostError(RuntimeError):
-    """Molion answered a call with an error."""
+    """Rubiture answered a call with an error."""
 
 
 class Host:
@@ -26,7 +26,7 @@ class Host:
         self._readline = readline
         self._write = write
         self._next_id = 0
-        # Answers Molion's requests that arrive while a call waits, by method.
+        # Answers Rubiture's requests that arrive while a call waits, by method.
         self.handlers: dict[str, Callable[[dict], dict]] = {}
 
     def send(self, message: dict) -> None:
@@ -48,7 +48,7 @@ class Host:
         while True:
             line = self._readline()
             if not line:
-                raise HostError('Molion closed the connection')
+                raise HostError('Rubiture closed the connection')
             line = line.strip()
             if not line:
                 continue
@@ -66,7 +66,7 @@ class Host:
             return message.get('result') or {}
 
     def serve_inbound(self, message: dict) -> None:
-        """A request from Molion that arrived mid-call: a handler's answer, else an empty one."""
+        """A request from Rubiture that arrived mid-call: a handler's answer, else an empty one."""
         if 'id' not in message:
             return
         handler = self.handlers.get(message['method'])
@@ -75,7 +75,7 @@ class Host:
             return
         try:
             self.reply(message['id'], handler(message.get('params') or {}))
-        except Exception as error:            # Molion shows the message; the plugin keeps running
+        except Exception as error:            # Rubiture shows the message; the plugin keeps running
             log(traceback.format_exc())
             self.reply(message['id'], error=str(error))
 

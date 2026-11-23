@@ -1,4 +1,4 @@
-"""Present Mechanism: the steps of a drawn mechanism, for Molion's presenter. Pure.
+"""Present Mechanism: the steps of a drawn mechanism, for Rubiture's presenter. Pure.
 
 A scheme is stages joined by reaction arrows, read in reading order (rows top to bottom,
 each left to right). Every structure, text and curved arrow belongs to a stage: the

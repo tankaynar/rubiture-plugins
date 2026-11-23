@@ -1,10 +1,10 @@
 # Teaching
 
-A Molion plugin that ships with Molion, for teaching organic chemistry: projections,
+A Rubiture plugin that ships with Rubiture, for teaching organic chemistry: projections,
 retrosynthetic disconnections, mechanisms presented one arrow at a time, and worksheets.
 Atomic and hybrid orbitals are a plugin of their own, **Orbitals**.
 
-Turn it on in **Settings → Plugins → Included with Molion**. Everything it adds is in the
+Turn it on in **Settings → Plugins → Included with Rubiture**. Everything it adds is in the
 palette (press Space). It acts on what is selected and is one undo step each time.
 
 ## Projections
@@ -16,13 +16,13 @@ palette (press Space). It acts on what is selected and is one undo step each tim
 - **Fischer Projection** (select the molecule): its carbon chain upright, the most oxidised end
   on top (CHO above CH2OH). It is drawn as atoms and bonds, so the formula and analysis still
   read it. **Fischer Projection with Wedges** wedges the horizontal bonds toward the viewer,
-  which is what the cross means, so Molion keeps the stereo. The plain cross is how textbooks
+  which is what the cross means, so Rubiture keeps the stereo. The plain cross is how textbooks
   print it, and its stereocentres read as unspecified.
 - **Haworth Projection** (select a sugar): the ring flat, with the oxygen at the back right and
   the front edge bold. Each group points straight up or down. It is also drawn as atoms and
   bonds, and the toast names the anomer and series (β, D).
 
-Which group sits where comes from Molion, through `get-projection`. It
+Which group sits where comes from Rubiture, through `get-projection`. It
 reads each centre's configuration from a 3D model, so a projection agrees with the wedges
 drawn. A stereocentre the drawing leaves open is shown one way and said in the toast.
 

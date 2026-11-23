@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
-"""Orbitals — a Molion plugin: atomic and hybrid orbitals as pictures it draws.
+"""Orbitals — a Rubiture plugin: atomic and hybrid orbitals as pictures it draws.
 
 The ORBITALS tools (s, p, sp³, d) and the Place … Orbital commands put an orbital on the atom
 clicked, or aimed along a drag. Double-clicking one, or Edit Orbital… in the palette, opens it
-in Molion's dialog: its type, how its phase is shown, its colours and its angle. Its scene
+in Rubiture's dialog: its type, how its phase is shown, its colours and its angle. Its scene
 templates (an sp³ set, ethylene's π bond, benzene's p orbitals…) need no process at all.
 
     python3 main.py
 
-The protocol: Molion's plugin protocol, newline-delimited JSON-RPC 2.0 on stdin/stdout.
+The protocol: Rubiture's plugin protocol, newline-delimited JSON-RPC 2.0 on stdin/stdout.
 Logs go to stderr only; stdout is the channel. Standard library only.
 """
 
@@ -56,7 +56,7 @@ def serve(host: Host) -> int:
                 return 0
             else:
                 result = {}
-        except Exception as error:            # Molion shows it; the plugin keeps running
+        except Exception as error:            # Rubiture shows it; the plugin keeps running
             log(traceback.format_exc())
             if request_id is not None:
                 host.reply(request_id, error=str(error))

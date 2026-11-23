@@ -6,7 +6,7 @@
                {"label": "Co", "cospot": [0, 2], "spots": []}, …]}
 
 A co-spot lane shows its own spots and those of the two lanes it was spotted from; spots
-closer than MERGE_RF run as one, which is the point of co-spotting. Molion stores the text and
+closer than MERGE_RF run as one, which is the point of co-spotting. Rubiture stores the text and
 never reads it, so everything read back is checked and clamped here.
 """
 

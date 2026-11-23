@@ -1,5 +1,5 @@
 {
-  "id": "molion.tlc",
+  "id": "rubiture.tlc",
   "name": "TLC Plate",
   "version": "1.0.0",
   "description": "Thin-layer chromatography plates: lanes, spots with Rf, co-spots, stains and eluents.",

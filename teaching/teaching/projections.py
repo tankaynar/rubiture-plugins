@@ -1,6 +1,6 @@
 """Fischer and Haworth projections drawn as real atoms and bonds, so the formula, the
 analysis and the exports still read them as the molecule they are. The chemistry (which
-group sits where) comes from Molion's get-projection; this file only lays it out.
+group sits where) comes from Rubiture's get-projection; this file only lays it out.
 
 Each layout is a list of atoms [{key, element, label, x, y}] and bonds [{a, b, order, stereo}]
 naming atoms by key, in canvas units about (0, 0); actions.py draws them with add-atom and

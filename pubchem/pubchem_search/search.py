@@ -6,7 +6,7 @@ beside it and comes first. Every hit is then described by one batch property req
 
 Records: PubChem's own 2D drawing of a compound, not a layout of its SMILES. A SMILES cannot
 say where a disconnected ion sits, so heme's iron landed beside the porphyrin instead of in it.
-The record lists every hydrogen and is drawn at PubChem's scale; Molion folds and scales it.
+The record lists every hydrogen and is drawn at PubChem's scale; Rubiture folds and scales it.
 """
 
 from __future__ import annotations
